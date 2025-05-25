@@ -48,6 +48,7 @@ public class RegistrationServlet extends HttpServlet {
 				+ "</li>" + "<li>" + gender + "</li>" + "<li>" + course + "</li>" + "<li>" + timing + "</li>"
 				+ "</ul></body></html>";
 		writer.write(message);
+		
 
 	}
 
