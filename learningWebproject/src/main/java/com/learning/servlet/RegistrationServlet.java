@@ -41,7 +41,7 @@ public class RegistrationServlet extends HttpServlet {
 		System.out.println(name + " " + email + " " + phone + " " + gender);
 		System.out.println(course);
 		System.out.println(timing);
-		Arrays.asList(courses).stream().forEach(System.out::println);
+	//	Arrays.asList(courses).stream().forEach(System.out::println);
 //send response to browser
 		PrintWriter writer = response.getWriter();
 		String message = "<html><body><ul>" + "<li>" + name + "</li>" + "<li>" + email + "</li>" + "<li>" + phone
