@@ -12,6 +12,6 @@
 <p>Enter your Name</p>
 <input type ="text" name="username"/>
 <input type= "submit" value="Submit"/>
-</form>
-</body>
-</html>
+</form>        
+</body>       
+</html>    

@@ -15,7 +15,8 @@ public class Student {
 	private String course;
 	private String timing;
 	private String email;
-
+//student.phone
+//System.out.println(student.phone);
 	public String getUsername() {
 		return username;
 	}

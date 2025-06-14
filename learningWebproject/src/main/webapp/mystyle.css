@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .form-control,
 .form-select {
-    width: 50%;
+    width: 100%;
 }
 .container {
     background-color: #f9f9f9;

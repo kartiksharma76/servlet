@@ -1,0 +1,14 @@
+RequestDispatcher-
+it is an interface available in javax.servlet package.
+it has below methods-
+a) forword()
+b) include()
+
+-forword() method-
+if you want to forword the request {HttpServletRequest} from servlet to Html/jsp/servlet
+
+
+-include() method-
+if you want to include some resources {jsp / html/servlet} then used include() method
+
+Difference between include() and forword() methods?
