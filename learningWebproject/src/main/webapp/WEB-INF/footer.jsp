@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="user.do">
-<input type="submit" value="Show Users"/> 
-</form>
- <a href="RedirectServlet">Clickhere</a>
+<h1>footer</h1>
 </body>
 </html>

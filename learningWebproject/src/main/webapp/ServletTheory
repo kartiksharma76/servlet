@@ -12,3 +12,14 @@ if you want to forword the request {HttpServletRequest} from servlet to Html/jsp
 if you want to include some resources {jsp / html/servlet} then used include() method
 
 Difference between include() and forword() methods?
+
+forword() method : you can place many forword method in 1 sevlet conditionaly to
+forword to control but only 1 forword() will be executed
+
+include() method:you can place many include methods in servlet and all include methods will be executed
+
+
+--NOTE--
+you can restrict the user from accessing the resource(html/jsp) by placing the page under WEB-INF folder/directory
+
+ 
