@@ -40,7 +40,7 @@ public class RedirectServlet extends HttpServlet {
 			System.out.println(headername+" "+request.getHeader(headername));
 		}
 		// Some other information from request
-		System.out.println("locale "+request.getLocale());
+		System.out.println("locale "+request.getLocale()); 
 		System.out.println("method "+request.getMethod());
 		System.out.println("AuthType "+request.getAuthType());
 		System.out.println("ContextPath "+request.getContextPath());
