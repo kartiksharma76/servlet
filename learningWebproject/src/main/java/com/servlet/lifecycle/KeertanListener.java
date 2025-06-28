@@ -11,25 +11,25 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class KeertanListener implements ServletRequestListener {
 
-	/**
-	 * Default constructor.
-	 */
-	public KeertanListener() {
-		System.out.println("KeertanListener constructor");
-	}
+    /**
+     * Default constructor. 
+     */
+    public KeertanListener() {
+    	System.out.println("KeertanListener constructor");
+    }
 
 	/**
-	 * @see ServletRequestListener#requestDestroyed(ServletRequestEvent)
-	 */
-	public void requestDestroyed(ServletRequestEvent sre) {
-		System.out.println("KeertanListener request Distroyed");
-	}
+     * @see ServletRequestListener#requestDestroyed(ServletRequestEvent)
+     */
+    public void requestDestroyed(ServletRequestEvent sre)  { 
+    	System.out.println("KeertanListener request destroyed");
+    }
 
 	/**
-	 * @see ServletRequestListener#requestInitialized(ServletRequestEvent)
-	 */
-	public void requestInitialized(ServletRequestEvent sre) {
-		System.out.println("KeertanListener requestInitialized");
-	}
-
+     * @see ServletRequestListener#requestInitialized(ServletRequestEvent)
+     */
+    public void requestInitialized(ServletRequestEvent sre)  { 
+    	System.out.println("KeertanListener requestInitialized");
+    }
+	
 }
