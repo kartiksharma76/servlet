@@ -4,14 +4,15 @@
         response.sendRedirect("login.jsp");
         return;
     }
+    String enrollment = (String) session.getAttribute("enrollment");
 %>
 <html>
 <head>
-    <title>🚰 Water Supply Monitoring</title>
+    <title>📣 Lodge a Complaint</title>
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #e1f5fe, #fce4ec);
+            background: linear-gradient(to right, #fffde7, #e3f2fd);
             padding: 30px;
             margin: 0;
         }
@@ -27,9 +28,9 @@
 
         h2 {
             text-align: center;
-            color: #0288d1;
+            color: #f57f17;
             font-size: 24px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         label {
@@ -40,8 +41,8 @@
         }
 
         input[type="text"],
-        input[type="time"],
-        select {
+        select,
+        textarea {
             width: 100%;
             padding: 10px;
             margin-top: 8px;
@@ -50,12 +51,17 @@
             font-size: 15px;
         }
 
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
         select {
             background-color: #f9f9f9;
         }
 
         input[type="submit"] {
-            background-color: #0288d1;
+            background-color: #f57f17;
             color: white;
             padding: 12px;
             border: none;
@@ -68,7 +74,7 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #01579b;
+            background-color: #e65100;
         }
 
         .message {
@@ -77,32 +83,34 @@
             font-weight: bold;
             margin-top: 20px;
         }
-
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>🚰 Water Supply Monitoring</h2>
-        <form action="monitorWater.do" method="post">
-            <label for="source">Water Source:</label>
-            <input type="text" name="source" id="source" placeholder="Tank 1, Borewell..." required>
+        <h2>📣 Lodge a Complaint</h2>
+        <form action="ComplainServlet" method="post">
+            <label for="enrollment">Enrollment No:</label>
+            <input type="text" name="enrollment" id="enrollment" value="<%= enrollment %>" readonly>
 
-            <label for="supplyTime">Supply Time:</label>
-            <input type="time" name="supplyTime" id="supplyTime" required>
-
-            <label for="status">Status:</label>
-            <select name="status" id="status" required>
-                <option value="">-- Select Status --</option>
-                <option value="Available">✅ Available</option>
-                <option value="Not Available">❌ Not Available</option>
+            <label for="category">Category:</label>
+            <select name="category" id="category" required>
+                <option value="">-- Select Issue Type --</option>
+                <option value="Room">🛏️ Room</option>
+                <option value="Water">🚰 Water</option>
+                <option value="Food">🍽️ Food</option>
+                <option value="Electricity">💡 Electricity</option>
+                <option value="Others">📦 Others</option>
             </select>
 
-            <input type="submit" value="Log Supply">
+            <label for="description">Complaint Description:</label>
+            <textarea name="description" id="description" placeholder="Describe the issue in detail..." required></textarea>
+
+            <input type="submit" value="Submit Complaint">
         </form>
 
         <% String message = (String) request.getAttribute("message");
            if (message != null) { %>
-            <div class="message"><%= message %></div>
+            <div class="message">✅ <%= message %></div>
         <% } %>
     </div>
 </body>

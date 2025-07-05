@@ -4,102 +4,106 @@
     <title>📝 Student Registration</title>
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #f9fbe7, #e0f7fa);
+            font-family: Arial;
+            background: #e3f2fd;
             margin: 0;
-            padding: 0;
+            padding: 20px;
         }
         .container {
-            max-width: 650px;
-            margin: 60px auto;
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #2196f3;
         }
         h2 {
             text-align: center;
-            color: #00796b;
-            margin-bottom: 30px;
+            color: #1565c0;
         }
         label {
             display: block;
             margin-top: 15px;
             font-weight: bold;
-            color: #004d40;
         }
-        input[type="text"], input[type="email"], input[type="date"], input[type="tel"] {
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
             width: 100%;
             padding: 10px;
-            margin-top: 6px;
+            margin-top: 8px;
             border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 14px;
-            box-sizing: border-box;
+            border-radius: 5px;
         }
         input[type="submit"] {
-            background-color: #00796b;
-            color: #fff;
-            padding: 12px;
+            background-color: #1565c0;
+            color: white;
             border: none;
-            border-radius: 8px;
-            width: 100%;
-            font-size: 16px;
-            margin-top: 30px;
+            padding: 12px 20px;
+            margin-top: 20px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
         }
         input[type="submit"]:hover {
-            background-color: #004d40;
+            background-color: #0d47a1;
         }
-        .note {
+        .error {
             text-align: center;
-            margin-top: 20px;
-            color: #888;
-            font-size: 14px;
+            color: red;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
+<%
+    if (session.getAttribute("enrollment") != null) {
+        response.sendRedirect("dashboard.jsp");
+        return;
+    }
+%>
     <div class="container">
         <h2>📝 Student Registration</h2>
         <form action="RegistrationServlet" method="post">
-            <label for="name">Full Name:</label>
-            <input type="text" name="name" id="name" required>
+            <label>Full Name:</label>
+            <input type="text" name="name" required>
 
-            <label for="enrollment">Enrollment No:</label>
-            <input type="text" name="enrollment" id="enrollment" required>
+            <label>Enrollment No:</label>
+            <input type="text" name="enrollment" required>
 
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
+            <label>Email:</label>
+            <input type="email" name="email" required>
 
-            <label for="branch">Branch:</label>
-            <input type="text" name="branch" id="branch" required placeholder="Enter your branch (e.g. CSE)">
+            <label>Branch:</label>
+            <input type="text" name="branch" required>
 
-            <label for="year">Year:</label>
-            <input type="text" name="year" id="year" required placeholder="Enter your year (e.g. 1st, 2nd)">
+            <label>Year:</label>
+            <input type="text" name="year" required>
 
-            <label for="dob">Date of Birth:</label>
-            <input type="date" name="dob" id="dob" required>
+            <label>Date of Birth:</label>
+            <input type="date" name="dob" required>
 
-            <label for="blood_group">Blood Group:</label>
-            <input type="text" name="blood_group" id="blood_group" required placeholder="E.g. B+, O-">
+            <label>Blood Group:</label>
+            <input type="text" name="blood_group" required>
 
-            <label for="mobile">Mobile Number:</label>
-            <input type="tel" name="mobile" id="mobile" required>
+            <label>Mobile Number:</label>
+            <input type="tel" name="mobile" required>
 
-            <label for="father_name">Father's Name:</label>
-            <input type="text" name="father_name" id="father_name" required>
+            <label>Father's Name:</label>
+            <input type="text" name="father_name" required>
 
-            <label for="father_mobile">Father's Mobile:</label>
-            <input type="tel" name="father_mobile" id="father_mobile" required>
+            <label>Father's Mobile:</label>
+            <input type="tel" name="father_mobile" required>
 
-            <label for="room_id">Room ID:</label>
-            <input type="text" name="room_id" id="room_id" required>
+            <label>Room ID:</label>
+            <input type="text" name="room_id" required>
 
             <input type="submit" value="Register">
         </form>
-        <div class="note">Already registered? <a href="login.jsp">Login here</a></div>
+
+        <% String error = request.getParameter("error");
+           if (error != null) { %>
+            <div class="error"><%= error %></div>
+        <% } %>
     </div>
 </body>
 </html>

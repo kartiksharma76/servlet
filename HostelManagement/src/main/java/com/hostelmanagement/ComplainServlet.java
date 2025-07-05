@@ -6,8 +6,8 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-@WebServlet("/monitorWater.do")
-public class WaterServlet extends HttpServlet {
+@WebServlet("/ComplainServlet")
+public class ComplainServlet extends HttpServlet {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/hostel";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "Kartik@2005";
@@ -15,36 +15,36 @@ public class WaterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String source = request.getParameter("source");
-        String supplyTime = request.getParameter("supplyTime");
-        String status = request.getParameter("status");
+        String enrollment = request.getParameter("enrollment");
+        String category = request.getParameter("category");
+        String description = request.getParameter("description");
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
                 PreparedStatement ps = conn.prepareStatement(
-                    "INSERT INTO water_monitoring (source, supply_time, status) VALUES (?, ?, ?)");
-                ps.setString(1, source);
-                ps.setString(2, supplyTime);
-                ps.setString(3, status);
+                    "INSERT INTO complaints (enrollment_no, category, description) VALUES (?, ?, ?)");
+                ps.setString(1, enrollment);
+                ps.setString(2, category);
+                ps.setString(3, description);
 
                 int result = ps.executeUpdate();
 
                 if (result > 0) {
-                    request.setAttribute("message", "Water supply logged successfully.");
+                    request.setAttribute("message", "Complaint submitted successfully!");
                 } else {
-                    request.setAttribute("message", "Failed to log supply.");
+                    request.setAttribute("message", "Failed to submit complaint.");
                 }
 
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("message", "Server error occurred.");
+            request.setAttribute("message", "Server error occurred while submitting.");
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("water_monitor.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
         rd.forward(request, response);
     }
 }
