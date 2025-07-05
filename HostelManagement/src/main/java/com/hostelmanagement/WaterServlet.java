@@ -8,33 +8,53 @@ import javax.servlet.http.*;
 
 @WebServlet("/monitorWater.do")
 public class WaterServlet extends HttpServlet {
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/hostel";
+    private static final String JDBC_USER = "root";
+    private static final String JDBC_PASS = "Kartik@2005";
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String source = request.getParameter("source");
         String supplyTime = request.getParameter("supplyTime");
         String status = request.getParameter("status");
-        String message = "";
+
+        // Basic validation
+        if (source == null || source.trim().isEmpty() ||
+            supplyTime == null || supplyTime.trim().isEmpty() ||
+            status == null || status.trim().isEmpty()) {
+            
+            request.setAttribute("message", "All fields are required.");
+            request.getRequestDispatcher("water_monitor.jsp").forward(request, response);
+            return;
+        }
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/hostel", "root", "Kartik@2005");
 
-            PreparedStatement ps = conn.prepareStatement(
-                "INSERT INTO water_monitoring (source, supply_time, status) VALUES (?, ?, ?)");
-            ps.setString(1, source);
-            ps.setString(2, supplyTime);
-            ps.setString(3, status);
-            ps.executeUpdate();
+            try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
+                 PreparedStatement stmt = conn.prepareStatement(
+                     "INSERT INTO water_monitoring (source, supply_time, status) VALUES (?, ?, ?)")) {
 
-            message = "Water monitoring entry saved successfully!";
-            conn.close();
+                stmt.setString(1, source);
+                stmt.setString(2, supplyTime);
+                stmt.setString(3, status);
+
+                int result = stmt.executeUpdate();
+
+                if (result > 0) {
+                    request.setAttribute("message", "Water supply data logged successfully ✅");
+                } else {
+                    request.setAttribute("message", "Failed to log water data ❌");
+                }
+
+                request.getRequestDispatcher("water_monitor.jsp").forward(request, response);
+            }
+
         } catch (Exception e) {
-            message = "Error: " + e.getMessage();
+            e.printStackTrace();
+            request.setAttribute("message", "Server error: " + e.getMessage());
+            request.getRequestDispatcher("water_monitor.jsp").forward(request, response);
         }
-
-        request.setAttribute("waterMessage", message);
-        request.getRequestDispatcher("water_monitor.jsp").forward(request, response);
     }
 }
