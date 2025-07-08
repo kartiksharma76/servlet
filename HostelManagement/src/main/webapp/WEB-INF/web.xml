@@ -1,0 +1,10 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="3.0">
+    <servlet>
+        <servlet-name>HostelManagementController</servlet-name>
+        <servlet-class>com.hm.controller.HostelManagementController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HostelManagementController</servlet-name>
+        <url-pattern>/controller/*</url-pattern>
+    </servlet-mapping>
+</web-app>

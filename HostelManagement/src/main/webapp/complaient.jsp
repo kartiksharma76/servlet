@@ -12,25 +12,25 @@
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #fffde7, #e3f2fd);
+            background: radial-gradient(circle at top left, #fff8e1, #e3f2fd);
             padding: 30px;
             margin: 0;
         }
 
         .container {
-            max-width: 650px;
+            max-width: 700px;
             margin: auto;
             background-color: #ffffff;
             padding: 40px;
             border-radius: 14px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
         }
 
         h2 {
             text-align: center;
             color: #f57f17;
-            font-size: 24px;
-            margin-bottom: 25px;
+            font-size: 26px;
+            margin-bottom: 30px;
         }
 
         label {
@@ -44,7 +44,7 @@
         select,
         textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-top: 8px;
             border: 1px solid #ccc;
             border-radius: 6px;
@@ -53,7 +53,7 @@
 
         textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 110px;
         }
 
         select {
@@ -63,7 +63,7 @@
         input[type="submit"] {
             background-color: #f57f17;
             color: white;
-            padding: 12px;
+            padding: 14px;
             border: none;
             border-radius: 8px;
             font-size: 16px;
@@ -82,6 +82,10 @@
             color: green;
             font-weight: bold;
             margin-top: 20px;
+            padding: 10px;
+            border-radius: 6px;
+            background-color: #f1f8e9;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
         }
     </style>
 </head>
@@ -92,9 +96,9 @@
             <label for="enrollment">Enrollment No:</label>
             <input type="text" name="enrollment" id="enrollment" value="<%= enrollment %>" readonly>
 
-            <label for="category">Category:</label>
+            <label for="category">Complaint Category:</label>
             <select name="category" id="category" required>
-                <option value="">-- Select Issue Type --</option>
+                <option value="">-- Select an Issue --</option>
                 <option value="Room">🛏️ Room</option>
                 <option value="Water">🚰 Water</option>
                 <option value="Food">🍽️ Food</option>
@@ -102,8 +106,8 @@
                 <option value="Others">📦 Others</option>
             </select>
 
-            <label for="description">Complaint Description:</label>
-            <textarea name="description" id="description" placeholder="Describe the issue in detail..." required></textarea>
+            <label for="description">Issue Description:</label>
+            <textarea name="description" id="description" placeholder="Please describe the problem in detail..." required></textarea>
 
             <input type="submit" value="Submit Complaint">
         </form>
