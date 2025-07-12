@@ -1,3 +1,4 @@
+
 // RegistrationRepositoryImpl.java
 package com.hm.repository;
 
@@ -6,8 +7,9 @@ import com.hm.dto.Registration;
 import com.hm.jdbc.utils.JdbcUtils;
 
 public class RegistrationRepositoryImpl implements RegistrationRepository {
-    public boolean saveStudentDetails(Registration r) {
-        String query = "INSERT INTO student VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public boolean saveDetails(Registration r) {
+        String query = "INSERT INTO student(enrollment_no,name,email,password,branch,year,dob,blood_group,mobile_no,father_name,father_mobile,room_id)"
+        		+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = JdbcUtils.getMysqlConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {

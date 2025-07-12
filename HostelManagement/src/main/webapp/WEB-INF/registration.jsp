@@ -52,7 +52,7 @@
 <body>
     <div class="container">
         <h2>Register a New Student</h2>
-        <form action="${pageContext.request.contextPath}/RegistrationServlet" method="post">
+        <form action="registration" method="post">
             <label>Enrollment No:</label>
             <input type="text" name="enrollment" required>
 

@@ -1,9 +1,10 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head><title>🔐 Login</title></head>
 <body>
     <h2>Student Login</h2>
-    <form action="${pageContext.request.contextPath}/portal/login" method="post">
+    <form action="portal/login" method="post">
         <input type="text" name="enrollment" required placeholder="Enrollment No"><br>
         <input type="password" name="password" required placeholder="Password"><br>
         <input type="submit" value="Login">
@@ -28,7 +29,7 @@
     <hr>
     <p>
         📝 New user?
-        <a href="${pageContext.request.contextPath}/registration.jsp">Register here</a>
+        <a href="portal/newUser">Register here</a>
     </p>
 </body>
 </html>
