@@ -25,7 +25,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 	        registration.setFatherMobile(request.getParameter("father_mobile"));
 	        registration.setRoomId(request.getParameter("room_id"));
 	        RegistrationRepository repository=new RegistrationRepositoryImpl();
-	       return repository.saveDetails(registration);
+	        return repository.saveDetails(registration);
 	}
     
 }
