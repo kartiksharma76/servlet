@@ -7,18 +7,20 @@ public class JdbcUtils {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
+            System.err.println("❌ MySQL Driver not found!");
             e.printStackTrace();
         }
     }
 
     public static Connection getMysqlConnection() {
-        String url = "jdbc:mysql://localhost:3306/hostel"; // change if needed
+        String url = "jdbc:mysql://localhost:3306/hostel?useSSL=false&serverTimezone=UTC";
         try {
-            return DriverManager.getConnection(url, "root", "Kartik@2005"); // update password if needed
+            return DriverManager.getConnection(url, "root", "Kartik@2005"); // ✅ Your password is here
         } catch (SQLException e) {
+            System.err.println("❌ Database connection failed!");
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     public static void closeResource(Statement st, Connection con, ResultSet rs) {

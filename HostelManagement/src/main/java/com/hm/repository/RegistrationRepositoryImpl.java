@@ -1,15 +1,14 @@
-
-// RegistrationRepositoryImpl.java
 package com.hm.repository;
 
 import java.sql.*;
 import com.hm.dto.Registration;
 import com.hm.jdbc.utils.JdbcUtils;
+import com.hm.util.PasswordUtil; // ← Import new utility
 
 public class RegistrationRepositoryImpl implements RegistrationRepository {
     public boolean saveDetails(Registration r) {
         String query = "INSERT INTO student(enrollment_no,name,email,password,branch,year,dob,blood_group,mobile_no,father_name,father_mobile,room_id)"
-        		+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = JdbcUtils.getMysqlConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
@@ -17,7 +16,11 @@ public class RegistrationRepositoryImpl implements RegistrationRepository {
             ps.setString(1, r.getEnrollmentNumber());
             ps.setString(2, r.getName());
             ps.setString(3, r.getEmail());
-            ps.setString(4, r.getPassword());
+            
+            // ✅ HASH the password before saving
+            String hashedPassword = PasswordUtil.hashPassword(r.getPassword());
+            ps.setString(4, hashedPassword); // ← Store hashed password
+            
             ps.setString(5, r.getBranch());
             ps.setString(6, r.getYear());
             ps.setString(7, r.getDob());

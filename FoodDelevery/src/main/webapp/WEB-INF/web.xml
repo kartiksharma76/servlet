@@ -1,0 +1,37 @@
+<web-app>
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.fooddelivery.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>FoodServlet</servlet-name>
+    <servlet-class>com.fooddelivery.FoodServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FoodServlet</servlet-name>
+    <url-pattern>/FoodServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>com.fooddelivery.OrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/OrderServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OrderHistoryServlet</servlet-name>
+    <servlet-class>com.fooddelivery.OrderHistoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderHistoryServlet</servlet-name>
+    <url-pattern>/OrderHistoryServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
