@@ -162,7 +162,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="SessionManagement" path="/SessionManagement" reloadable="true" source="org.eclipse.jst.jee.server:SessionManagement"/><Context docBase="HostelManagement" path="/HostelManagement" reloadable="true" source="org.eclipse.jst.jee.server:HostelManagement"/><Context docBase="GuestbookApp" path="/GuestbookApp" reloadable="true" source="org.eclipse.jst.jee.server:GuestbookApp"/><Context docBase="Atm" path="/Atm" reloadable="true" source="org.eclipse.jst.jee.server:Atm"/><Context docBase="FoodDelevery" path="/FoodDelevery" reloadable="true" source="org.eclipse.jst.jee.server:FoodDelevery"/></Host>
+      <Context docBase="SessionManagement" path="/SessionManagement" reloadable="true" source="org.eclipse.jst.jee.server:SessionManagement"/><Context docBase="HostelManagement" path="/HostelManagement" reloadable="true" source="org.eclipse.jst.jee.server:HostelManagement"/><Context docBase="GuestbookApp" path="/GuestbookApp" reloadable="true" source="org.eclipse.jst.jee.server:GuestbookApp"/><Context docBase="Atm" path="/Atm" reloadable="true" source="org.eclipse.jst.jee.server:Atm"/><Context docBase="FoodDelevery" path="/FoodDelevery" reloadable="true" source="org.eclipse.jst.jee.server:FoodDelevery"/><Context docBase="LibraryManagement" path="/LibraryManagement" reloadable="true" source="org.eclipse.jst.jee.server:LibraryManagement"/></Host>
     </Engine>
   </Service>
 </Server>

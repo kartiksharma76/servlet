@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="4.0">
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.library.controller.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddBookServlet</servlet-name>
+        <servlet-class>com.library.controller.AddBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddBookServlet</servlet-name>
+        <url-pattern>/AddBookServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewBooksServlet</servlet-name>
+        <servlet-class>com.library.controller.ViewBooksServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewBooksServlet</servlet-name>
+        <url-pattern>/ViewBooksServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteBookServlet</servlet-name>
+        <servlet-class>com.library.controller.DeleteBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteBookServlet</servlet-name>
+        <url-pattern>/DeleteBookServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetBookServlet</servlet-name>
+        <servlet-class>com.library.controller.GetBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetBookServlet</servlet-name>
+        <url-pattern>/GetBookServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateBookServlet</servlet-name>
+        <servlet-class>com.library.controller.UpdateBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateBookServlet</servlet-name>
+        <url-pattern>/UpdateBookServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
